@@ -1,4 +1,4 @@
 package com.imman.iava.Schedule;
 
-public class DataSet {
+public class DataSetSubject {
 }

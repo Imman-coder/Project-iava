@@ -26,7 +26,9 @@ public class SubjectClassAdapter extends RecyclerView.Adapter<SubjectClassAdapte
                         break;
             case 1 : class_card = layoutInflater.inflate(R.layout.row_item_card_lab,parent,false);
                 break;
-            default : class_card = layoutInflater.inflate(R.layout.row_item_card_notice,parent,false);
+            case 2 : class_card = layoutInflater.inflate(R.layout.row_item_card_notice,parent,false);
+                break;
+            default : class_card = layoutInflater.inflate(R.layout.row_item_card_time_divider,parent,false);
                 break;
         }
         ViewHolder viewHolder = new ViewHolder(class_card);
@@ -36,14 +38,18 @@ public class SubjectClassAdapter extends RecyclerView.Adapter<SubjectClassAdapte
     @Override
     public void onBindViewHolder(@NonNull SubjectClassAdapter.ViewHolder holder, int position) {
         String pos = Integer.toString(position);
-        if(position%3==0)
-            setSubject(holder,"09:15-10:1"+pos,"Class "+pos,"Subject"+pos);
-        if(position%3==1)
-            setLab(holder,"09:15-10:1"+pos,"Class "+pos,"Subject1:"+pos,"Subject2:"+pos);
-        if(position%3==2)
-            setNotice(holder,"09:15-10:1"+pos,"Hello"+pos);
-//        if(position%3==2)
-//            setNotice(holder,"09:15-10:1"+pos,"Hello"+pos);
+        switch (getItemViewType(position)){
+            case 0 : setSubject(holder,"09:15-10:1"+pos,"Class "+pos,"Subject"+pos);
+                    break;
+            case 1 : setLab(holder,"09:15-10:1"+pos,"Class "+pos,"Subject1:"+pos,"Subject2:"+pos);
+                    break;
+            case 2 : setNotice(holder,"09:15-10:1"+pos,"Hello"+pos);
+                    break;
+//            case 3 : setNotice(holder,"09:15-10:1"+pos,"Hello"+pos);
+//                    break;
+            default:
+                    break;
+        }
     }
 
     @Override
@@ -58,7 +64,7 @@ public class SubjectClassAdapter extends RecyclerView.Adapter<SubjectClassAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView subject_time,subject_class,subject_subject,notice_time,notice_notice,lab_time,lab_class,lab_sub1,lab_sub2;
+        TextView subject_time,subject_class,subject_subject,notice_time,notice_notice,lab_time,lab_class,lab_sub1,lab_sub2,time_divider_text;
         public ViewHolder(View itemView) {
             super(itemView);
             subject_time = itemView.findViewById(R.id.card_subject_time);
@@ -70,6 +76,7 @@ public class SubjectClassAdapter extends RecyclerView.Adapter<SubjectClassAdapte
             lab_class = itemView.findViewById(R.id.card_lab_class);
             lab_sub1 = itemView.findViewById(R.id.card_lab_lab1);
             lab_sub2 = itemView.findViewById(R.id.card_lab_lab2);
+            time_divider_text = itemView.findViewById(R.id.card_time_divider_text);
         }
     }
 
