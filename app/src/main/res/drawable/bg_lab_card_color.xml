@@ -1,0 +1,10 @@
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="130">
+    <shape>
+        <gradient
+            android:centerX="-10.0"
+            android:endColor="@color/green_100"
+            android:startColor="@color/pink_card"
+            android:type="sweep" />
+    </shape>
+</rotate>

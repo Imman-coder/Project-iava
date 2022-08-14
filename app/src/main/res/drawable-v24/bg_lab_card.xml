@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/bg_lab_card_color"
+    android:insetTop="-200dp"
+    android:insetLeft="-200dp"
+    android:insetRight="-200dp"
+    android:insetBottom="-200dp"
+    >
+</inset>
