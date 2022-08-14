@@ -31,7 +31,7 @@ public class ScheduleActivity extends AppCompatActivity {
         title = findViewById(R.id.appTitle);
         bottomSheetCard = findViewById(R.id.bottom_sheet_card);
         classShimmerLayout = findViewById(R.id.class_recyclerView_shimmer);
-        classShimmerLayout.startShimmer();
+        test();
         BottomSheetBehavior<View> sheetBehaviour = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet_layout));
         sheetBehaviour.setState(BottomSheetBehavior.STATE_EXPANDED);
         sheetBehaviour.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -66,5 +66,11 @@ public class ScheduleActivity extends AppCompatActivity {
         classRecyclerView.setHasFixedSize(true);
         classRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         classRecyclerView.setAdapter(adapter);
+    }
+
+    private void test() {
+//        classShimmerLayout.startShimmer();
+        classShimmerLayout.setVisibility(View.GONE);
+        classRecyclerView.setVisibility(View.VISIBLE);
     }
 }
