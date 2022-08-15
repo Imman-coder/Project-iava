@@ -7,12 +7,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.imman.iava.Schedule.HandleSchedule;
 import com.imman.iava.Schedule.SubjectClassAdapter;
 
 public class ScheduleActivity extends AppCompatActivity {
@@ -21,7 +24,8 @@ public class ScheduleActivity extends AppCompatActivity {
     TextView title;
     CardView bottomSheetCard;
     ShimmerFrameLayout classShimmerLayout;
-
+    BottomSheetBehavior<View> sheetBehaviour;
+    static Context t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +35,17 @@ public class ScheduleActivity extends AppCompatActivity {
         title = findViewById(R.id.appTitle);
         bottomSheetCard = findViewById(R.id.bottom_sheet_card);
         classShimmerLayout = findViewById(R.id.class_recyclerView_shimmer);
+        t=this;
         test();
-        BottomSheetBehavior<View> sheetBehaviour = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet_layout));
+    }
+
+    private void test() {
+//        classShimmerLayout.startShimmer();
+        classShimmerLayout.setVisibility(View.GONE);
+        classRecyclerView.setVisibility(View.VISIBLE);
+
+        //Extras
+        sheetBehaviour = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet_layout));
         sheetBehaviour.setState(BottomSheetBehavior.STATE_EXPANDED);
         sheetBehaviour.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -66,11 +79,34 @@ public class ScheduleActivity extends AppCompatActivity {
         classRecyclerView.setHasFixedSize(true);
         classRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         classRecyclerView.setAdapter(adapter);
+        new asyncTasks().execute();
     }
 
-    private void test() {
-//        classShimmerLayout.startShimmer();
-        classShimmerLayout.setVisibility(View.GONE);
-        classRecyclerView.setVisibility(View.VISIBLE);
+    static void populateList(){
+
+    }
+
+    static class asyncTasks extends AsyncTask<Void, Void, String>{
+
+        asyncTasks(){
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            HandleSchedule.run(t);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 }

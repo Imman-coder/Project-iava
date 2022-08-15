@@ -1,8 +1,9 @@
 package com.imman.iava.Network;
 
 import android.content.Context;
+import android.util.Log;
 
-import com.imman.iava.Data.Profile;
+import com.imman.iava.UserData.Profile;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -42,6 +43,19 @@ public class NetworkRequest {
         return "";
     }
 
+    //Normal Get Request
+    public String GetN(String url) {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
     //Post Request
     public String Post(String url, RequestBody requestBody) {
 
@@ -67,4 +81,5 @@ public class NetworkRequest {
         }
         return "";
     }
+
 }

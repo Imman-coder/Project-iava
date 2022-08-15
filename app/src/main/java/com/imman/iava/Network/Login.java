@@ -1,7 +1,7 @@
 package com.imman.iava.Network;
 
-import com.imman.iava.Data.ExtractProfile;
-import com.imman.iava.Data.Profile;
+import com.imman.iava.UserData.ExtractProfile;
+import com.imman.iava.UserData.Profile;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.imman.iava.Data.Profile;
+import com.imman.iava.UserData.Profile;
 import com.imman.iava.Network.Checker;
 import com.imman.iava.Network.NetworkRequest;
 

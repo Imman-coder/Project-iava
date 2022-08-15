@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imman.iava.R;
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 public class MainClassAdapter extends RecyclerView.Adapter<MainClassAdapter.ViewHolder> {
 

@@ -1,6 +1,4 @@
-package com.imman.iava.Data;
-
-import android.content.Context;
+package com.imman.iava.UserData;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
