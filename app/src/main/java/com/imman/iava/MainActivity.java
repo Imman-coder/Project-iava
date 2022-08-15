@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         details =findViewById(R.id.details_tv);
         networkRequest = new NetworkRequest(this);
         setUserData(networkRequest.profile);
-//        loginSession();
+        loginSession();
 
     }
 
@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     void loginSession(){
         //check if username password is stored
         if(new Profile(this).is_loggedin()){
+
+            startActivity(new Intent(this,ScheduleActivity.class));
+            finish();
+
             //If not logged in just now then login
             if(!getIntent().getBooleanExtra("Logged_in_now",false)){
                 //Login

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.imman.iava.Network.NetworkRequest;
+import com.imman.iava.UserData.Profile;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,16 +15,14 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-public class HandleSchedule {
+public class HandleNetwork {
     static NetworkRequest networkRequest;
     static String baseUrl = "https://raw.githubusercontent.com/Imman-coder/iava-dataset/main/";
-    static final String fileLastUpdate = "lastUpdate.txt";
-    static final String fileRouteTable = "Tables_rough.jsonc";
     static Context t ;
-    public static void run(Context t){
+    public static boolean run(Context t){
         networkRequest = new NetworkRequest(t);
-        HandleSchedule.t =t;
-        String routeTable = networkRequest.GetN(baseUrl+fileRouteTable);
+        HandleNetwork.t =t;
+        String routeTable = networkRequest.GetN(baseUrl+ MyString.fileRouteTable);
         Log.d("CheckList:", routeTable);
         String[] p = parserD(routeTable);
 
@@ -31,18 +30,19 @@ public class HandleSchedule {
         if(p!=null){
 
             //check if table already exist
-            if(StoreTable.tableExist(p[0],t) && StoreTable.tableExist(fileLastUpdate,t)){
+            if(StoreTable.tableExist(p[0],t) && StoreTable.tableExist(MyString.fileLastUpdate,t)){
 
                 //check if already exist table is outdated
-                if(isFirstTimeGreater(p[1],StoreTable.ReadTable(fileLastUpdate,t))){
+                if(isFirstTimeGreater(p[1],StoreTable.ReadTable(MyString.fileLastUpdate,t))){
 
                     //download and update table
-                    downloadUpdateTable(p);
+                    return downloadUpdateTable(p);
                 }
 
                 //if table is all okay
                 else{
                     System.out.println("Table already setup!");
+                    return false;
                 }
             }
 
@@ -50,30 +50,33 @@ public class HandleSchedule {
             else {
 
                 //download and update table
-                downloadUpdateTable(p);
+                return downloadUpdateTable(p);
             }
         }
 
         //if p is null(File doesn't exist)
         else {
             System.out.println("Table not Uploaded!");
+            return false;
         }
-
     }
 
-    static void downloadUpdateTable(String[] p){
+    static boolean downloadUpdateTable(String[] p){
         //download and store table
         String nowTable = networkRequest.GetN(baseUrl+p[0]);
 
         //check if nowTable is invalid
-        if(nowTable.equals("404: Not Found"))
+        if(nowTable.equals("404: Not Found")){
             System.out.println("UserTable not Uploaded");
+            return false;
+        }
 
             //if nowTable is valid
         else{
             StoreTable.WriteTable(nowTable,p[0],t);
-            StoreTable.WriteTable(getTimeNow(), fileLastUpdate,t);
+            StoreTable.WriteTable(getTimeNow(), MyString.fileLastUpdate,t);
             System.out.println("Table Updated!");
+            return true;
         }
     }
 
@@ -107,4 +110,7 @@ public class HandleSchedule {
         return currentDateandTime;
     }
 
+    public static boolean ifPossible(Context t) {
+        return StoreTable.tableExist(new Profile(t).getUserTableLinkRough(),t);
+    }
 }

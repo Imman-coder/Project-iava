@@ -74,6 +74,13 @@ public class Profile {
         return sharedpreferences.getString(Session_Id,"");
     }
 
+    public String getUserTableLink(){
+        return getBatch()+"_"+getBranch_Code()+"_"+getSemester_Code()+"_"+getSection()+".json";
+    }
+    public String getUserTableLinkRough(){
+        return getBatch()+"_"+getBranch_Code()+"_"+getSemester_Code()+"_"+getSection()+"_rough"+".jsonc";
+    }
+
     /*
     * Setter Function.
     * */

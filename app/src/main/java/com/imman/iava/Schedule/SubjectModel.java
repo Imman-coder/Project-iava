@@ -1,8 +1,8 @@
 package com.imman.iava.Schedule;
 
 public class SubjectModel {
-    String time,class_number,subject,subject_code,teacher,notice,subject2,subject_code2,teacher2,timeDividerText;
-    Boolean isLab,isNotice,isClass,isTimeDivider;
+    public String time,class_number,subject,subject_code,teacher,notice,subject2,subject_code2,teacher2,timeDividerText;
+    public Boolean isLab,isNotice,isClass,isTimeDivider;
 
     public SubjectModel(String time, String class_number, String subject, String subject_code, String teacher, String notice, String subject2, String subject_code2, String teacher2, String timeDividerText, Boolean isTimeDivider, Boolean isLab, Boolean isNotice, Boolean isClass) {
         this.time = time;

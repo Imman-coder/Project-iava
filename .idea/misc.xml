@@ -19,13 +19,15 @@
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/drawable/bg_lab_card.xml" value="0.268" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/drawable/bg_lab_card_color.xml" value="0.1085" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/drawable/bg_subject_card.xml" value="0.268" />
+        <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/drawable/bg_week_card_selected.xml" value="0.138" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/drawable/ic_launcher_background.xml" value="0.256" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/drawable/ic_more_vert_fill0_wght400_grad0_opsz48.xml" value="0.1815" />
+        <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/activity_home.xml" value="0.371875" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/activity_login.xml" value="0.3817427385892116" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/activity_main.xml" value="0.1671875" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/activity_schedule.xml" value="0.33" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/bottom_sheet.xml" value="0.25" />
-        <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/home_cards.xml" value="0.37083333333333335" />
+        <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/home_cards.xml" value="0.33" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/row_item_card.xml" value="0.27606635071090047" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/row_item_card_lab.xml" value="0.37083333333333335" />
         <entry key="..\:/Projects/Android/Dsco/iava/app/src/main/res/layout/row_item_card_notice.xml" value="0.67" />

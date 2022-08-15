@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.imman.iava.R;
 
+import java.util.ArrayList;
+
 public class SubjectClassAdapter extends RecyclerView.Adapter<SubjectClassAdapter.ViewHolder> {
-    String s[];
-    public SubjectClassAdapter(String s[]){
-        this.s=s;
+    ArrayList<SubjectModel> weekSubjectModel;
+
+    public SubjectClassAdapter(ArrayList<SubjectModel> subjectModel){
+        this.weekSubjectModel = subjectModel;
     }
 
     @NonNull
@@ -37,30 +40,37 @@ public class SubjectClassAdapter extends RecyclerView.Adapter<SubjectClassAdapte
 
     @Override
     public void onBindViewHolder(@NonNull SubjectClassAdapter.ViewHolder holder, int position) {
-        String pos = Integer.toString(position);
+        SubjectModel now = weekSubjectModel.get(position);
         switch (getItemViewType(position)){
-            case 0 : setSubject(holder,"09:15-10:1"+pos,"Class "+pos,"Subject"+pos);
+            case 0 : setSubject(holder,now.time,"Class "+now.class_number,now.subject+"("+now.teacher+")");
                     break;
-            case 1 : setLab(holder,"09:15-10:1"+pos,"Class "+pos,"Subject1:"+pos,"Subject2:"+pos);
+            case 1 : setLab(holder,now.time,"Class "+now.class_number, now.subject+"("+now.teacher+")", now.subject2+"("+now.teacher2+")");
                     break;
-            case 2 : setNotice(holder,"09:15-10:1"+pos,"Hello"+pos);
+            case 2 : setNotice(holder,now.time,now.notice);
                     break;
-//            case 3 : setNotice(holder,"09:15-10:1"+pos,"Hello"+pos);
-//                    break;
-            default:
+            default : setTimeDivider(holder,now.timeDividerText);
                     break;
         }
     }
 
     @Override
     public int getItemCount() {
-        return s.length;
+        return weekSubjectModel.size();
     }
 
     @Override
     public int getItemViewType(int position) {
         super.getItemViewType(position);
-        return position%3;
+        SubjectModel now = weekSubjectModel.get(position);
+        if(now.isClass)
+            return 0;
+        if(now.isLab)
+            return 1;
+        if(now.isNotice)
+            return 2;
+        else
+            return 3;
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -94,10 +104,14 @@ public class SubjectClassAdapter extends RecyclerView.Adapter<SubjectClassAdapte
         holder.lab_sub2.setText(Subject2);
 
     }
-    void setNotice(@NonNull SubjectClassAdapter.ViewHolder holder, String Time, String notice){
+    void setNotice(@NonNull SubjectClassAdapter.ViewHolder holder, String Time, String Notice){
         //Setting values
         holder.notice_time.setText(Time);
-        holder.notice_notice.setText(notice);
+        holder.notice_notice.setText(Notice);
+    }
+    void setTimeDivider(@NonNull SubjectClassAdapter.ViewHolder holder, String text){
+        //Setting values
+        holder.time_divider_text.setText(text);
     }
 
 }
